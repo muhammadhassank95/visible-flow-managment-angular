@@ -1,0 +1,27 @@
+<div class="header-container bg-custom-primary py-4 px-4 flex justify-between items-center">
+    <div>
+        <span class="flex items-center">
+            <!-- <img src="/assets/images/grid-solid.svg" class="w-[30px] mr-4 cursor-pointer" nz-popover nzPopoverTrigger="click"
+            [nzPopoverContent]="contentTemplate" nzPopoverPlacement="bottomLeft"
+            />
+            <ng-template #contentTemplate>
+                <app-navigation-menu></app-navigation-menu>
+            </ng-template> -->
+            <span class="text-white text-2xl">VisibleFlow</span>
+        </span>
+        </div>
+        <div class="flex items-center">
+            <span class="text-white text-xl cursor-pointer" nz-icon nzType="setting" nzTheme="fill" nz-popover nzPopoverTrigger="click"
+            [nzPopoverContent]="settingList" [(nzPopoverVisible)]="visible" nzPopoverPlacement="bottomRight"></span>
+            <ng-template #settingList>
+                <div class="flex justify-center items-center bg-custom-primary text-white border border-[#002746] py-1 text-xs">
+                    <span>Settings</span>
+                </div>
+                <button class="w-full py-1 px-4 text-xs flex align-middle items-center uppercase text-gray-600 bg-white hover:text-white hover:bg-custom-primary"
+                    (click)="navigateTo(option.route)"
+                    *ngFor="let option of optionList" mat-menu-item>
+                    {{option.name}}
+                </button>
+            </ng-template>
+    </div>
+</div>

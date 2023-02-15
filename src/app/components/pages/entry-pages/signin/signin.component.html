@@ -1,0 +1,41 @@
+<div class="signin-container h-[calc(100vh-33px)] bg-custom-primary flex flex-col text-white justify-center items-center">
+  <span class="flex flex-col justify-center items-center font-medium tracking-[3.5px]">
+    <span class="text-white text-[50px]">VisibleFlow</span>
+  </span>
+  <div
+    [formGroup]="signInFormGroup"
+    class="flex flex-col w-80 mt-10"
+  >
+    <div class="text-[10px] font-medium">Email</div>
+    <input
+      nz-input
+      type="text"
+      placeholder="email"
+      formControlName="username"
+      class="mb-3 rounded shadow-md mr-2 h-[35px]"
+    />
+    <div class="text-[10px] font-medium">Password</div>
+    <nz-input-group
+      [nzSuffix]="suffixTemplate"
+      class="mb-4 rounded h-[35px]"
+    >
+      <input
+        nz-input
+        placeholder="password"
+        formControlName="password"
+        [type]="passwordVisible ? 'text' : 'password'"
+      />
+    </nz-input-group>
+    <ng-template #suffixTemplate>
+      <span
+        nz-icon
+        [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+        (click)="passwordVisible = !passwordVisible"
+      ></span>
+    </ng-template>
+    <button
+      class="uppercase self-end rounded border-white border py-1 px-3"
+      (click)="signIn()"
+    >Log in</button>
+  </div>
+</div>

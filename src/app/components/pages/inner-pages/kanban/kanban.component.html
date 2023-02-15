@@ -1,0 +1,166 @@
+<div class="flex flex-row w-full gap-2 bg-[#CCC] p-2" cdkDropListGroup>
+    <div class="basis-4/5 flex flex-col w-full gap-2">
+        <div class="overflow-hidden basis-4/5 flex flex-row gap-2">
+            <ng-container *ngFor="let kanban of kanbanData; index as i">
+                <div 
+                    class="basis-1/5  bg-[#CCC]"
+                    cdkDropList
+                    [cdkDropListData]="kanban.data"
+                    (cdkDropListDropped)="drop($event)"
+                    >
+                    <div class="bg-white py-1 px-3 w-full flex justify-between mb-2 rounded-md items-center">
+                        <span ></span>
+                        <span class="text-[#5F5F5F] text-xl"> {{ kanban.statusName }}</span>
+                        <span class="bg-[#5F5F5F] rounded-full w-6 h-6 flex justify-center items-center text-white"> {{ kanban.data.length }}</span> 
+                    </div>
+                    
+                    <div class="h-full bg-white py-3 px-2 rounded-md">
+                            <div class="mb-2" *ngFor="let item of kanban.data" cdkDrag>
+                                <div class="flex flex-col cursor-move">
+                                    <span 
+                                        class="rounded-t-md text-sm flex justify-between"
+                                        [ngClass]="{ 
+                                            'bg-[#C30000]': item.priority === 'high',
+                                            'bg-[#BF9A00]': item.priority === 'med',
+                                            'bg-[#81C774]': item.priority === 'low'
+                                        }">
+                                        <span></span>
+                                        <span class="text-white">
+                                            {{item.title}}
+                                        </span>
+                                        <span></span>
+                                    </span>
+                                    <span 
+                                        [ngClass]="{ 
+                                            'bg-[#E67F7F] text-white': item.priority === 'high', 
+                                            'bg-[#E6D27F]': item.priority === 'med',
+                                            'bg-[#C8FABF]': item.priority === 'low'
+                                        }"
+                                        class="py-1 px-2 text-xs rounded-b-md pb-5">
+                                        {{ item.description }}
+                                    </span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="gap-2 basis-1/5 flex flex-row">
+            <div class=" basis-[19.5%] flex-flex-col">
+                <div class="bg-white py-1 px-3 w-full flex justify-between mb-2 rounded-md ">
+                    <span ></span>
+                    <span class="text-[#5F5F5F] text-xl">Pick Up & Go</span>
+                    <span class="bg-[#5F5F5F] rounded-full w-6 h-6 flex justify-center items-center text-white"> {{ pickupGo.length }} </span>
+                </div>
+                <div class="bg-white py-3 px-2 rounded-md min-h-[180px]"
+                    cdkDropList
+                    [cdkDropListData]="pickupGo"
+                    (cdkDropListDropped)="drop($event)">
+                    <div class="mb-2" *ngFor="let item of pickupGo" cdkDrag>
+                        <div class="flex flex-col  cursor-move">
+                            <span 
+                                class="rounded-t-md text-sm flex justify-between"
+                                [ngClass]="{ 
+                                    'bg-[#C30000]': item.priority === 'high',
+                                    'bg-[#BF9A00]': item.priority === 'med',
+                                    'bg-[#81C774]': item.priority === 'low'
+                                }">
+                                <span></span>
+                                <span class="text-white">
+                                    {{item.title}}
+                                </span>
+                                <span></span>
+                            </span>
+                            <span 
+                                [ngClass]="{ 
+                                    'bg-[#E67F7F] text-white': item.priority === 'high', 
+                                    'bg-[#E6D27F]': item.priority === 'med',
+                                    'bg-[#C8FABF]': item.priority === 'low'
+                                }"
+                                class="py-1 px-2 text-xs rounded-b-md pb-5">
+                                {{ item.description }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="basis-[80.5%]">
+                <div class="bg-white py-1 px-3 w-full flex justify-between mb-2 rounded-md ">
+                    <span ></span>
+                    <span class="text-[#5F5F5F] text-xl"> Pick Up & Go Executing</span>
+                    <span class="bg-[#5F5F5F] rounded-full w-6 h-6 flex justify-center items-center text-white"> {{ pickupGoExecuting.length }}</span>
+                </div>
+                <div class="bg-white py-3 px-2 rounded-md h-[180px]"
+                    cdkDropList
+                    [cdkDropListData]="pickupGoExecuting"
+                    (cdkDropListDropped)="drop($event)">
+                    <div class="mb-2" *ngFor="let item of pickupGoExecuting" cdkDrag>
+                        <div class="flex flex-col cursor-move">
+                            <span 
+                                class="rounded-t-md text-sm flex justify-between"
+                                [ngClass]="{ 
+                                    'bg-[#C30000]': item.priority === 'high',
+                                    'bg-[#BF9A00]': item.priority === 'med',
+                                    'bg-[#81C774]': item.priority === 'low'
+                                }">
+                                <span></span>
+                                <span class="text-white">
+                                    {{item.title}}
+                                </span>
+                                <span></span>
+                            </span>
+                            <span 
+                                [ngClass]="{ 
+                                    'bg-[#E67F7F] text-white': item.priority === 'high', 
+                                    'bg-[#E6D27F]': item.priority === 'med',
+                                    'bg-[#C8FABF]': item.priority === 'low'
+                                }"
+                                class="py-1 px-2 text-xs rounded-b-md pb-5">
+                                {{ item.description }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="basis-1/5 h-[height: calc(100vh - 71px)]">
+        <div class="bg-white py-1 px-3 w-full flex justify-between mb-2 rounded-md "
+                >
+            <span ></span>
+            <span class="text-[#5F5F5F] text-xl"> Completed</span>
+            <span class="bg-[#5F5F5F] rounded-full w-6 h-6 flex justify-center items-center text-white"> {{ completedBoard.length }} </span>
+        </div>
+        <div class="bg-white py-4 px-2 rounded-md h-[100vh]"
+                cdkDropList
+                [cdkDropListData]="completedBoard"
+                (cdkDropListDropped)="drop($event)">
+                <div class="mb-2" *ngFor="let item of completedBoard" cdkDrag>
+                    <div class="flex flex-col cursor-move">
+                        <span 
+                            class="rounded-t-md text-sm flex justify-between"
+                            [ngClass]="{ 
+                                'bg-[#C30000]': item.priority === 'high',
+                                'bg-[#BF9A00]': item.priority === 'med',
+                                'bg-[#81C774]': item.priority === 'low'
+                            }">
+                            <span></span>
+                            <span class="text-white">
+                                {{item.title}}
+                            </span>
+                            <span></span>
+                        </span>
+                        <span 
+                            [ngClass]="{ 
+                                'bg-[#E67F7F] text-white': item.priority === 'high', 
+                                'bg-[#E6D27F]': item.priority === 'med',
+                                'bg-[#C8FABF]': item.priority === 'low'
+                            }"
+                            class="py-1 px-2 text-xs rounded-b-md pb-5">
+                            {{ item.description }}
+                        </span>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div
+    class="flex flex-wrap text-white"
+    [ngClass]="!isHeader ? 'w-[450px] h-[450px] text-xl' : 'w-[250px] h-[250px] text-sm'"
+>
+    <div
+        class="flex flex-col h-1/2 w-1/2 justify-center items-center"
+        [ngClass]="[!isHeader ? 'rounded-tl-lg' : '' , !userRoles.includes('Planner') ?  'bg-[#c7c6c6] cursor-default' : 'bg-[#eb7c7c]']"
+    >
+        <img    
+            class="drop-shadow"
+            [ngClass]="!isHeader ? 'w-[75px] pb-2' : 'w-[35px]  pb-1'"
+            src="/assets/images/navigation-icons/calendar-plus-regular.svg"
+        />planner
+    </div>
+    <div
+        class="flex flex-col h-1/2 w-1/2 justify-center items-center"
+        [ngClass]="[!isHeader ? 'rounded-tr-lg' : '' , !userRoles.includes('Process Tracker') ?  'bg-[#c7c6c6] cursor-default' : 'bg-[#78ad24]']"
+    >
+        <img
+            class="drop-shadow"
+            [ngClass]="!isHeader ? 'w-[75px] pb-2' : 'w-[40px]  pb-1'"
+            src="/assets/images/navigation-icons/magnifying-glass-chart-solid.svg"
+        />process tracker
+    </div >
+    <div
+        class="flex flex-col h-1/2 w-1/2 justify-center items-center text-center"
+        [ngClass]="[!isHeader ? 'rounded-bl-lg' : '' , !userRoles.includes('Shipment Reconciliation') ?  'bg-[#c7c6c6] cursor-default' : 'bg-[#ffba00]']"
+    >
+        <img
+            class="drop-shadow"
+            [ngClass]="!isHeader ? 'w-[80px] pb-2' : 'w-[45px]  pb-1'"
+            src="/assets/images/navigation-icons/truck-ramp-box-solid.svg"
+        />
+        <span >Shipment</span>
+        <span class="leading-none">reconciliation</span>
+    </div>
+    <div
+        class="flex flex-col h-1/2 w-1/2 justify-center items-center"
+        [ngClass]="[!isHeader ? 'rounded-br-lg' : '' , !userRoles.includes('Shipment Log') ?  'bg-[#c7c6c6] cursor-default' : 'bg-[#6191b9] cursor-pointer']"
+        (click)="navigateTo(userRoles.includes('Shipment Log') ? '/shipment-log' : '')"
+    >
+        <img
+            class="drop-shadow"
+            [ngClass]="!isHeader ? 'w-[90px] pb-2' : 'w-[45px]  pb-1'"
+            src="/assets/images/navigation-icons/pallet-boxes-solid.svg"
+        />shipment log
+    </div>
+</div>

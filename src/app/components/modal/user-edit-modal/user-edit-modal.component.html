@@ -1,0 +1,72 @@
+<!-- Modal content -->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  (nzOnCancel)="closeModalClicked()"
+  nzCentered
+  [nzClosable]="false"
+  [nzWidth]="670"
+  (nzAfterClose)="modalClose()"
+  [nzMaskClosable]="false"
+>
+  <ng-template #modalTitle class="p-0">
+      <!-- Modal header -->
+      <div class="flex items-center p-2 rounded-t bg-custom-primary text-white">
+      <div class="grow text-center text-xl font-medium mb-0 text-white uppercase mr-[-24px]">{{data.title}}</div>
+    </div>
+  </ng-template>
+  <form class="modal-form" [formGroup]="formGroup">
+    <ng-template #modalContent>
+      <div class="modal-form bg-white">
+        <!-- Modal body -->
+          <div class="flex flex-col w-full">
+            <div class="flex">
+              <input type="text" nz-input formControlName="name" class="mb-1 rounded shadow-md mr-2 h-10" placeholder="name"/>
+              <input type="text" nz-input formControlName="email" class="mb-1 rounded shadow-md h-10" placeholder="email"/>
+            </div>
+            
+            <!-- <span class="flex flex-col my-5" >
+              <span class="uppercase">Modules</span>
+              <span class="flex flex-row flex-wrap">
+                <nz-tag
+                  *ngFor="let module of getModulesFormArray?.controls; let i = index"
+                  nzMode="checkable"
+                  [nzChecked]="selectedTags.indexOf(module.value?.name) > -1"
+                  (nzCheckedChange)="handleChange($event, getColor(i).name, i)"
+                  class="outline outline-1 text-white rounded-md py-1 px-2 uppercase text-xs"
+                  formArrayName="roles"
+                  [ngClass]="!module.value.isSelected ? 'bg-gray-500' : getColor(i)?.color"
+                > {{ getColor(i)?.name }}
+                </nz-tag>
+              </span>
+            </span> -->
+          </div>
+      </div>
+    </ng-template>
+
+    <ng-template #modalFooter>
+      <div class="flex justify-between">
+        <div class="flex ml-4">
+          <label nz-checkbox formControlName="isAdmin">ADMIN</label>
+        </div>
+        <div class="mb-2">
+          <button data-modal-toggle="defaultModal" type="button"
+            (click)="closeModalClicked()"
+            class="text-center bg-custom-red text-white py-2 px-4 mr-3 rounded uppercase cursor-pointer">
+            cancel
+          </button>
+          <button data-modal-toggle="defaultModal" type="button" [disabled]="formGroup.invalid"
+            (click)="editUser()"
+            class="text-center bg-custom-green text-white py-2 px-4 rounded uppercase cursor-pointer"
+            [ngClass]="{ 'bg-custom-primary-disabled': formGroup.invalid }"
+          >
+            <div class="uppercase" *ngIf="data.isEdit" (click)="updateUser()">Update</div>
+            <div class="uppercase" *ngIf="!data.isEdit" (click)="submitUser()">Add</div>
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </form>
+</nz-modal>

@@ -1,0 +1,22 @@
+<div class="flex h-full items-center">
+  <div
+    *ngIf="isAdmin"
+    class="flex bg-gray-400 text-white rounded px-2 uppercase text-[8px] outline outline-1 h-[18px] items-center mx-1"
+  >ADMIN</div>
+  <div
+    *ngIf="isPlanner"
+    class="flex bg-[#EB7C7C] text-white rounded px-2 uppercase text-[8px] outline outline-1 h-[18px] items-center mx-1"
+  >PLANNER</div>
+  <div
+    class="flex bg-[#6191B9] text-white rounded px-2 uppercase text-[8px] outline outline-1 h-[18px] items-center mx-1"
+    *ngIf="isShipmentLog"
+  >SHIPMENT LOG</div>
+  <div
+    *ngIf="isProcessTracker"
+    class="flex bg-[#78AD24] text-white rounded px-2 uppercase text-[8px] outline outline-1 h-[18px] items-center mx-1"
+  >Process Tracker</div>
+  <div
+    *ngIf="isShipmentReconciliation"
+    class="flex bg-[#FFBA00] text-white rounded px-2 uppercase text-[8px] outline outline-1 h-[18px] items-center mx-1"
+  >Shipment Reconciliation</div>
+</div>

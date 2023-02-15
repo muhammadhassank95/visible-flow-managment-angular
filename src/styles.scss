@@ -1,0 +1,63 @@
+
+//AG Grid
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+p{ margin: 0 !important; padding: 0 !important;}
+
+.ant-popover-inner-content{
+    @apply p-0;
+}
+.ant-modal-content{
+  @apply rounded overflow-hidden
+}
+.ant-modal-header{
+    @apply p-0;
+}
+
+.ant-modal-footer{
+    @apply border-none;
+}
+.ant-popover-inner {
+  @apply rounded-lg overflow-hidden
+}
+
+/* grid styling */
+// ag grid look & feel better
+.ag-theme-alpine .ag-root-wrapper {
+  @apply border-0
+}
+
+.ag-theme-alpine .ag-header {
+  background-color: rgb(191 219 254);
+}
+
+.ag-theme-alpine {
+    border: 1px solid #babfc7;
+    border-radius: 2px;
+    box-shadow: 0 0 3px #babfc0;
+  }
+  .ag-theme-alpine .ag-header {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #babfc7;
+    height: 34px !important;
+    min-height: 34px !important;
+  }
+  .ag-theme-alpine .ag-header .ag-header-row {
+    height: 30px !important;
+  }
+  .ag-theme-alpine .ag-header .ag-header-cell-text {
+    color: #181d1f;
+    opacity: 0.75;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  /* grid styling */

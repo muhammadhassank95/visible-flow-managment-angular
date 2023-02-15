@@ -1,0 +1,71 @@
+
+<div class="flex flex-col w-full items-center px-4 h-[calc(100vh-140px)] bg-white">
+  <!-- TOP BAR -->
+  <div class="flex w-full justify-between ">
+    <div class="flex text-custom-primary uppercase font-semibold text-[20px]">
+      <!-- <img class="h-[50px]" src="/assets/images/users-solid.svg"> -->
+      <div class="flex flex-col pl-2">
+        <div class="whitespace-nowrap ">User Admin panel</div>
+        <!-- <div class="mt-[-4px]">panel</div> -->
+      </div>
+    </div>
+    <div (click)="goToHome()" class="flex items-center justify-center rounded-full bg-custom-primary h-[30px] w-[30px] cursor-pointer">
+      <span nz-icon nzType="close" class="text-white text-center"  nzTheme="outline"></span>
+    </div>
+  </div>
+  <!-- MAIN CENTER COLUMN -->
+  <div class="flex grow flex-col w-3/4 items-center pt-2">
+
+    <!-- BUTTON CLUSTER (ROW) -->
+    <div class="flex w-full justify-between">
+      <div class="flex flex-nowrap justify-start items-start">
+        <button (click)="addUser()"
+          class=" align-middle font-medium text-gray-500 border border-custom-tbr-gray px-3 py-[4px] rounded cursor-pointer
+                  hover:bg-gray-400 hover:text-white hover:border-gray-400
+                "
+        > + ADD USER</button>
+        <button (click)="resetPassword()"
+          class=" mx-4 font-medium text-gray-500 border border-custom-tbr-gray px-3 py-[4px] rounded cursor-pointer
+                  hover:bg-gray-400 hover:text-white hover:border-gray-400
+                "
+        >RESET PASSWORD</button>
+        <button (click)="editUser()"
+          class=" font-medium text-gray-500 border border-custom-tbr-gray px-3 py-[4px] rounded cursor-pointer
+                  hover:bg-gray-400 hover:text-white hover:border-gray-400
+                "
+        >EDIT</button>
+      </div>
+      <button (click)="deleteUserClicked()"
+        class=" font-medium text-white border border-custom-red bg-custom-red px-3 py-[4px] rounded cursor-pointer
+                hover:bg-white hover:text-custom-red hover:border-custom-red
+              "
+      >DELETE</button>
+    </div>
+    <!-- GRID -->
+    <div
+      class="flex grow my-6"
+      style="width: 100%; height: 100%;"
+    >
+    <!-- style="width: 100%; height: 100%;" -->
+        <ag-grid-angular
+            class="ag-theme-alpine"
+            style="width: 100%; height: 100%; overflow: auto;"
+            [defaultColDef]="defaultColDef"
+            [suppressDragLeaveHidesColumns]="true"
+            (modelUpdated)="onModelUpdated($event)"
+            [rowData]="rowData"
+            [columnDefs]="columnDefs"
+            [rowSelection]="rowSelection"
+            [frameworkComponents]="frameworkComponents"
+            (gridReady)="onGridReady($event)"
+            (rowSelected)="onRowSelected($event)"
+            [pagination]="true"
+            [paginationAutoPageSize]="true"
+        ></ag-grid-angular>
+    </div>
+  </div>
+</div>
+
+<app-user-edit-modal #addEdituser (addUserOutput)="emitter()"></app-user-edit-modal>
+
+<app-delete-modal #deleteUser (on-delete-emit)="deleteUserEmitter()"></app-delete-modal>

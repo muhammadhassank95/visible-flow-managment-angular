@@ -1,0 +1,40 @@
+<nz-modal
+        [(nzVisible)]="isVisible"
+        [nzTitle]="modalTitle"
+        [nzContent]="modalContent"
+        (nzOnCancel)="closeModalClicked()"
+        nzCentered
+        [nzFooter]="deleteModalFooter"
+        [nzClosable]="false"
+        [nzWidth]="620"
+        (nzAfterClose)="closeModalClicked()"
+        [nzMaskClosable]="false"
+    >     
+    <ng-template #modalTitle class="p-0">
+        <div class="flex p-3">
+            <span class="uppercase w-full text-center">File Requirements</span>
+        </div>
+    </ng-template>
+    <ng-template #modalContent>
+        <div class="flex flex-col">
+            <div class="flex flex-col mb-4">
+                <span class="uppercase font-semibold">P350 Report</span>
+                <span>
+                    Any additions to the P350 file in terms of columns, must be communicated to the IT department in order for the code to be
+                    updated to avoid data loss during upload.
+                </span>
+            </div>
+            <div class="flex flex-col">
+                <span class="uppercase font-semibold">Shipment Log</span>
+                <span>
+                    Moving columns out of order could potentially break the upload. You must Maintain the integrity of the order to avoid
+                    conflicts during your upload.  <br>
+                    For more information, please contact the IT department.
+                </span>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #deleteModalFooter>
+        <button class="py-1 px-5 bg-custom-primary text-white" (click)="isVisible = false">Close</button>
+    </ng-template>
+</nz-modal>

@@ -1,0 +1,38 @@
+<nz-modal
+      [(nzVisible)]="isVisible"
+      [nzTitle]="modalTitle"
+      [nzContent]="modalContent"
+      [nzFooter]="modalFooter"
+      (nzOnCancel)="closeModalClicked($event)"
+      nzCentered
+      [nzClosable]="false"
+      [nzWidth]="670"
+      (nzAfterClose)="modalClose()"
+      [nzMaskClosable]="false"
+    >     
+    <ng-template #modalTitle class="p-0">
+      <div class="flex items-center p-2 rounded-t bg-custom-primary text-white">
+        <div class="grow text-center text-xl font-medium mb-0 text-white uppercase mr-[-24px]">{{data.title}}</div>
+      </div>
+   </ng-template>
+   <ng-template #modalContent>
+
+    <div class="text-[18px] font-medium px-4 pb-6">
+      Are you sure you want to delete user {{ data.selectedUser.email }} ?
+    </div>
+   </ng-template>
+   
+    <ng-template #modalFooter>
+
+    <div class="flex w-full justify-end font-medium">
+      <button type="button" (click)="closeModalClicked(false)"
+              class="text-center bg-white border border-custom-primary text-custom-primary py-2 px-4 mr-3 rounded uppercase cursor-pointer">
+        cancel
+      </button>
+      <button type="button" (click)="confirmDelete()"
+              class="text-center bg-custom-red text-white py-2 px-4 rounded uppercase cursor-pointer">
+        confirm
+      </button>
+    </div>
+    </ng-template>
+</nz-modal>
